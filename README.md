@@ -1,31 +1,51 @@
-# Generador Dinámico de CSV con Datos Aleatorios
+# Generador Avanzado de Datos Sintéticos 🧪📊
 
-Este proyecto permite generar archivos CSV con datos aleatorios de manera **dinámica y configurable**.  
-El objetivo es practicar análisis de datos con distintos escenarios, controlando categorías, cantidad de registros y opciones de cada campo.
+Este proyecto permite generar **datasets sintéticos, realistas y con datos sucios opcionales** para practicar **análisis de datos** en distintos escenarios.  
+Ofrece una interfaz gráfica moderna basada en `ttkbootstrap`, con soporte multi-categoría, selección dinámica de columnas, internacionalización y exportación a múltiples formatos.
 
 ---
 
-## 🚀 Características
+## 🚀 Características principales
 
-- Interfaz gráfica simple (usando `tkinter`).
-- Configuración dinámica de:
-  - Cantidad de registros.
-  - Categorías de datos (ej: ciudades, productos, nombres, correos, etc).
-  - Opciones disponibles para cada categoría (mínimo 3, máximo 20).
-- Uso de la librería `faker` para datos realistas (nombres, correos, direcciones, fechas).
-- Exportación de resultados en formato **CSV**.
+- **Interfaz moderna** con `ttkbootstrap` (sobre `tkinter`).
+- **Internacionalización**: genera datos en distintos idiomas (`es_CO`, `en_US`, `fr_FR`, `de_DE`, `pt_BR`, ...).
+- **Selección dinámica**:
+  - Categorías disponibles:  
+    - 📦 Inventario  
+    - 👥 Clientes  
+    - 🧑‍💼 Empleados  
+    - 📚 Biblioteca  
+    - 🛒 Ventas  
+    - 🚌 Viajes  
+  - Selección personalizada de columnas por categoría.  
+  - Subconjuntos configurables de opciones (ej: número de ciudades, productos, autores, etc).  
+- **Generación de datos sucios (opcionales)**:
+  - Valores nulos/faltantes.
+  - Registros duplicados.
+  - Texto con ruido / emails inválidos.
+  - Outliers numéricos.
+  - Tipos erróneos en columnas numéricas.
+- **Formatos de exportación**:
+  - CSV (uno por categoría o múltiple).
+  - Excel (`.xlsx`) con varias hojas (una por categoría).
+  - JSON estructurado.
+  - SQL (SQLite con tablas por categoría).
+- **Historial de exportaciones**:
+  - Guarda las últimas 5 exportaciones realizadas.
+  - Opción de abrir la carpeta del archivo directamente.
 
 ---
 
 ## 📦 Requisitos
 
-El proyecto depende de:
+Dependencias principales:
 
 - `pandas`
 - `faker`
-- `tkinter` (viene incluido con Python, en Linux puede requerir instalación extra)
+- `ttkbootstrap`
+- `xlsxwriter`
 
-Instalar dependencias con:
+Instalar con:
 
 ```bash
 pip install -r requirements.txt
@@ -36,52 +56,58 @@ En **Ubuntu/Debian** puede que necesites instalar `tkinter` manualmente:
 sudo apt-get install python3-tk
 ```
 
+---
+
 ## ⚙️ Uso
 
 Ejecuta el script principal:
+
 ```bash
-python generador_csv.py
+python generador_datos_avanzado.py
 ```
+
 Se abrirá una ventana donde podrás:
 
-1. Seleccionar cuántos registros generar.
+1. Seleccionar el idioma de los datos.  
+2. Definir cuántos registros generar.  
+3. Escoger una o varias categorías (Clientes, Ventas, etc).  
+4. Seleccionar las columnas que deseas incluir.  
+5. Configurar subconjuntos de opciones (ej: 5 ciudades, 10 productos).  
+6. (Opcional) Activar **datos sucios** y su porcentaje.  
+7. Elegir el formato de exportación (CSV, Excel, JSON o SQL).  
+8. Guardar el archivo en tu computadora.  
 
-2. Escoger la categoría de datos (ejemplo: "Ciudades").
-
-3. Definir cuántas opciones incluir (ejemplo: 3 → Bogotá, Medellín, Cali).
-
-4. Generar el archivo datos_generados.csv automáticamente.
-
+---
 
 ## 📂 Estructura del Proyecto
+
 ```bash
 .
-├── main.py                # Script principal con la interfaz gráfica
-├── requirements.txt       # Dependencias necesarias
-└── README.md              # Documentación del proyecto
+├── main.py                       # Script principal con la interfaz gráfica
+├── requirements.txt              # Dependencias necesarias
+└── README.md                     # Documentación del proyecto
 ```
 
-## 📝 Ejemplo de Uso
+---
 
-- Categoría: Ciudades
+## 📝 Ejemplo de Exportación
 
-- Opciones: 3
+**Excel con múltiples hojas** (Clientes y Ventas seleccionados):  
 
-- Registros: 10
-
-El archivo generado (datos_generados.csv) puede verse así:
+- Hoja `Clientes`:
 ```
-id,ciudad
-1,Bogotá
-2,Cali
-3,Medellín
-4,Bogotá
-5,Cali
-6,Medellín
-7,Cali
-8,Bogotá
-9,Bogotá
-10,Medellín
+Nombre, Ciudad, Edad, Email
+Juan Pérez, Bogotá, 34, juanperez@mail.com
+María Gómez, Medellín, 29, mariagomez@mail.com
 ```
 
-Proyecto desarrollado como material de práctica en análisis de datos y generación de datasets sintéticos.
+- Hoja `Ventas`:
+```
+Fecha, Producto, Cantidad, Precio_unitario
+2025-08-10, Café, 5, 3500
+2025-08-12, Pan, 2, 1200
+```
+
+---
+
+Proyecto desarrollado como herramienta de práctica para **análisis, limpieza y transformación de datos**.

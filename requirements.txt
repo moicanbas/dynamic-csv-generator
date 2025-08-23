@@ -1,3 +1,4 @@
 pandas
 faker
+ttkbootstrap
 # python3-tk
