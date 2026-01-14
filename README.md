@@ -63,7 +63,7 @@ sudo apt-get install python3-tk
 Ejecuta el script principal:
 
 ```bash
-python generador_datos_avanzado.py
+python main.py
 ```
 
 Se abrirá una ventana donde podrás:
